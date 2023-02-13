@@ -1,5 +1,5 @@
 ---
-title: On JWT Claims
+title: Keep JWT Claims Minimal
 tags: [jwt]
 readtime: true
 ---
