@@ -1,6 +1,6 @@
 ---
 title: Don't Handwrite OAS
-tags: [OpenAPI]
+tags: [openapi]
 readtime: true
 ---
 
