@@ -62,7 +62,7 @@ However, if that's not necessary because the user can meaningfully interact with
 
     1. Create a State Container with `bool _isFirstRendered` and a delegate `event Action OnChange`.
 
-    1. Update `WeatherService`'s constructor to add `InitializeWeatherAsync()` to `OnChange.
+    1. Update `WeatherService`'s constructor to add `InitializeWeatherAsync()` to `OnChange`.
 
     1. Create a parent Component that all Components inherit from, with the following code:
 
