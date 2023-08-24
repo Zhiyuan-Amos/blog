@@ -92,6 +92,10 @@ For example,
 >
 > Your tests should be as dumb as possible. They basically need to verify only one use case. With those if statements, you diverged from that guideline.<sup>[8][8]</sup>
 
+### Others
+
+> Anti-Pattern: Sharing page objects, using your UI to log in, and not taking shortcuts.<sup>[9][9]</sup>
+
 #### DAMP
 
 > consider tolerating some duplication when it makes the test more descriptive and meaningful... [so that each test] can be understood entirely without leaving the test body. A reader of these tests can feel confident that the tests do what they claim to do and aren't hiding any bugs.<sup>[2][2]</sup>
@@ -129,6 +133,7 @@ I don't know (yet).
 1. [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
 1. [How Deep Are Your Unit Tests](https://stackoverflow.com/a/153565/8828382)
 1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
+1. [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
 
 [1]: https://abseil.io/resources/swe-book/html/ch11.html
 [2]: https://abseil.io/resources/swe-book/html/ch12.html
@@ -138,3 +143,4 @@ I don't know (yet).
 [6]: https://kentcdodds.com/blog/write-tests
 [7]: https://stackoverflow.com/a/153565/8828382
 [8]: https://techleadjournal.dev/episodes/58/
+[9]: https://docs.cypress.io/guides/references/best-practices
