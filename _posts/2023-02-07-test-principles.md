@@ -70,6 +70,8 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 > I get paid for **code that works**, not for tests, so my philosophy is to test **as little as possible** to reach a given level of confidence.<sup>[7][7]</sup> - Kent Beck (emphasis mine)
 
+> Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[10][10]</sup>
+
 #### Consider Inverting Test Design
 
 Think of what Integration Tests to write. Then, think of the scenarios that Integration Tests do not cover and can be covered by Unit Tests.
@@ -134,6 +136,7 @@ I don't know (yet).
 1. [How Deep Are Your Unit Tests](https://stackoverflow.com/a/153565/8828382)
 1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
 1. [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
+1. [Which Kinds of Tests Should I Write? Revisited](https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited)
 
 [1]: https://abseil.io/resources/swe-book/html/ch11.html
 [2]: https://abseil.io/resources/swe-book/html/ch12.html
@@ -144,3 +147,4 @@ I don't know (yet).
 [7]: https://stackoverflow.com/a/153565/8828382
 [8]: https://techleadjournal.dev/episodes/58/
 [9]: https://docs.cypress.io/guides/references/best-practices
+[10]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
