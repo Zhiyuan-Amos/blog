@@ -72,6 +72,8 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 > Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[10][10]</sup>
 
+> The way that tests help you solve problems is by mitigating risk... Test code itself does not directly deliver value. It's valuable for its loss prevention, both in terms of the real harm of bugs (lost revenue, violated privacy, errors in results) and in terms of the time spent detecting and fixing those bugs. We don't like paying that cost, so we pay for tests instead. It's an insurance policy... Selecting your policy is selecting how much risk you want to take on, or how much you can afford to avoid.<sup>[11][11]</sup>
+
 #### Consider Inverting Test Design
 
 Think of what Integration Tests to write. Then, think of the scenarios that Integration Tests do not cover and can be covered by Unit Tests.
@@ -137,6 +139,7 @@ I don't know (yet).
 1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
 1. [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
 1. [Which Kinds of Tests Should I Write? Revisited](https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited)
+1. [Too much of a good thing: the trade-off we make with tests](https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing)
 
 [1]: https://abseil.io/resources/swe-book/html/ch11.html
 [2]: https://abseil.io/resources/swe-book/html/ch12.html
@@ -148,3 +151,4 @@ I don't know (yet).
 [8]: https://techleadjournal.dev/episodes/58/
 [9]: https://docs.cypress.io/guides/references/best-practices
 [10]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
+[11]: https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing
