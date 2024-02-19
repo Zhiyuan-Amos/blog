@@ -62,6 +62,50 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 > When you mock something, you're making a trade-off. You're trading confidence for something else. For me, that something else is usually practicality - meaning I wouldn't be able to test this thing at all, or it may be pretty difficult/messy, without mocking. (Like in our credit card example.)<sup>[5][5]</sup>
 
+## Practical Notes
+
+### Internal Services
+
+Microservices [should not be coupled](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/communication-in-microservice-architecture#asynchronous-microservice-integration-enforces-microservices-autonomy):
+
+> If possible, never depend on synchronous communication (request/response) between multiple microservices, not even for queries. The goal of each microservice is to be autonomous and available to the client consumer, even if the other services that are part of the end-to-end application are down or unhealthy. If you think you need to make a call from one microservice to other microservices (like performing an HTTP request for a data query) to be able to provide a response to a client application, you have an architecture that won't be resilient when some microservices fail.
+
+The alternative is to decouple each service from each other, and have them be coupled to communication systems such as:
+
+1. Event Bus & Message Queues
+2. Outbox
+3. Workflows
+
+Upon decoupling, each service no longer knows its dependent services.
+
+Apart from being a best practice, it's also not practical to deploy dependent services when running tests because the entire tree of dependencies have to be deployed, and performing each operation could add up to a long time.
+
+Note that hard dependencies like databases, Event Bus & Message Queues should not be mocked or faked, because they aren't necessarily the same as the in-memory ones. Mocking can be non-trivial as well.
+
+### External Services
+
+Evaluation of not mocking external services such as GitHub & Stripe:
+
+Pros:
+
+1. Ensure that it really works, or specifically that their code didn't break
+
+Cons:
+
+1. API usage limit or cost per usage
+2. Latency
+3. Services can be down
+
+Consider the possibility of having an integrated test that runs infrequently. This minimises the cons and still grants assurance that our code works.
+
+### Transitivity
+
+Test 1: Service only allows access to endpoint A if a token has scope B
+Test 2: Administrators have scope B (Test 2 verifies that Adminstrators have all the scopes that they are supposed to have)
+Conclusion: Therefore, Administrators can access endpoint A
+
+The (more complex) alternative to testing that only Group A can access Feature B requires obtaining tokens for all other Groups and verifying that tokens cannot access Feature B. Testing that Feature B can only be accessed with Scope A currently requires creating a new User, assigning the Scope to the Scope.
+
 ## General Principles
 
 ### Avoid Test Duplication
