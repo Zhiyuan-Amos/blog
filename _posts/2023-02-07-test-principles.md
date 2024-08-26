@@ -12,7 +12,7 @@ The purpose of writing tests is to "support the ability to change. Whether you'r
 
 Tests should not be brittle. After tests are written,
 
-> Engineers don't need to think about them again until they fail, and those **failures indicate real bugs with clear causes**... You shouldn't need to touch that test again as you refactor the system, fix bugs, or add new features.<sup>[2][2]</sup> (emphasis mine)
+> Engineers don't need to think about them again until they fail, and those failures indicate real bugs with clear causes... You shouldn't need to touch that test again as you refactor the system, fix bugs, or add new features.<sup>[2][2]</sup>
 
 Mocking, a key component of internal tests, causes tests to brittle.
 
@@ -34,9 +34,9 @@ To test methods that mutate state, write higher-level tests instead.
 
 ### Consider Unit Tests
 
-> At Google, we've found that engineers sometimes need to be persuaded that **testing via public APIs is better than testing against implementation details**...
+> At Google, we've found that engineers sometimes need to be persuaded that testing via public APIs is better than testing against implementation details...
 >
-> Tests using only public APIs are, by definition, accessing the system under test in the same manner that its users would. Such tests are more realistic and less brittle because they form explicit contracts: if such a test breaks, it implies that an existing user of the system will also be broken. Testing only these **contracts** means that you're free to do whatever internal refactoring of the system you want without having to worry about making tedious changes to tests.<sup>[2][2]</sup> (emphasis mine)
+> Tests using only public APIs are, by definition, accessing the system under test in the same manner that its users would. Such tests are more realistic and less brittle because they form explicit contracts: if such a test breaks, it implies that an existing user of the system will also be broken. Testing only these contracts means that you're free to do whatever internal refactoring of the system you want without having to worry about making tedious changes to tests.<sup>[2][2]</sup>
 
 #### Examples of Unit
 
@@ -66,7 +66,7 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 > there's one more pitfall to avoid: duplicating tests throughout the different layers of the pyramid. While your gut feeling might say that there's no such thing as too many tests let me assure you, there is. Every single test in your test suite is additional baggage and doesn't come for free.<sup>[4][4]</sup>
 
-> I get paid for **code that works**, not for tests, so my philosophy is to test **as little as possible** to reach a given level of confidence.<sup>[7][7]</sup> - Kent Beck (emphasis mine)
+> I get paid for code that works, not for tests, so my philosophy is to test as little as possible to reach a given level of confidence.<sup>[7][7]</sup>
 
 > Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[9][9]</sup>
 
