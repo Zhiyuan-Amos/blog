@@ -4,7 +4,7 @@ tags: [test]
 readtime: true
 ---
 
-The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> Below are helpful principles on how to write tests.
+The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> Below are helpful principles on how to write tests well.
 
 ## Test Groups
 
