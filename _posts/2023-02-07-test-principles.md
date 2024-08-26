@@ -6,6 +6,16 @@ readtime: true
 
 The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> This is obvious, but the purpose of writing tests is sometimes forgotten and replaced by unhelpful metrics like achieving a certain code coverage. So, keep this in mind as you read the rest of the article.
 
+This article will cover pointers on writing tests across the different levels of the test pyramid including:
+
+1. Internal (i.e. implementation details that are not exposed to the end-user)
+2. Unit
+3. Integration
+
+E2E tests are not covered as I haven't had the opportunity to deep-dive and write tests at that level. Prior to publishing this article, I had the opportunity to apply these pointers below at my workplace and found them to be helpful.
+
+Then, we will cover some general principles that are applicable to all levels of the test pyramid.
+
 ## Test Pyramid
 
 ### Disprefer Internal Tests
@@ -58,7 +68,7 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 ## General Principles
 
-### Avoid Test Duplication
+### Write just enough Tests
 
 > there's one more pitfall to avoid: duplicating tests throughout the different layers of the pyramid. While your gut feeling might say that there's no such thing as too many tests let me assure you, there is. Every single test in your test suite is additional baggage and doesn't come for free.<sup>[4][4]</sup>
 
