@@ -58,51 +58,7 @@ To test methods that mutate state, write higher-level tests instead.
 
 See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
-> When you mock something, you're making a trade-off. You're trading confidence for something else. For me, that something else is usually practicality - meaning I wouldn't be able to test this thing at all, or it may be pretty difficult/messy, without mocking. (Like in our credit card example.)<sup>[5][5]</sup>
-
-## Practical Notes
-
-### Internal Services
-
-Microservices [should not be coupled](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/communication-in-microservice-architecture#asynchronous-microservice-integration-enforces-microservices-autonomy):
-
-> If possible, never depend on synchronous communication (request/response) between multiple microservices, not even for queries. The goal of each microservice is to be autonomous and available to the client consumer, even if the other services that are part of the end-to-end application are down or unhealthy. If you think you need to make a call from one microservice to other microservices (like performing an HTTP request for a data query) to be able to provide a response to a client application, you have an architecture that won't be resilient when some microservices fail.
-
-The alternative is to decouple each service from each other, and have them be coupled to communication systems such as:
-
-1. Event Bus & Message Queues
-2. Outbox
-3. Workflows
-
-Upon decoupling, each service no longer knows its dependent services.
-
-Apart from being a best practice, it's also not practical to deploy dependent services when running tests because the entire tree of dependencies have to be deployed, and performing each operation could add up to a long time.
-
-Note that hard dependencies like databases, Event Bus & Message Queues should not be mocked or faked, because they aren't necessarily the same as the in-memory ones. Mocking can be non-trivial as well.
-
-### External Services
-
-Evaluation of not mocking external services such as GitHub & Stripe:
-
-Pros:
-
-1. Ensure that it really works, or specifically that their code didn't break
-
-Cons:
-
-1. API usage limit or cost per usage
-2. Latency
-3. Services can be down
-
-Consider the possibility of having an integrated test that runs infrequently. This minimises the cons and still grants assurance that our code works.
-
-### Transitivity
-
-Test 1: Service only allows access to endpoint A if a token has scope B
-Test 2: Administrators have scope B (Test 2 verifies that Adminstrators have all the scopes that they are supposed to have)
-Conclusion: Therefore, Administrators can access endpoint A
-
-The (more complex) alternative to testing that only Group A can access Feature B requires obtaining tokens for all other Groups and verifying that tokens cannot access Feature B. Testing that Feature B can only be accessed with Scope A currently requires creating a new User, assigning the Scope to the Scope.
+> When you mock something, you're making a trade-off. You're trading confidence for something else. For me, that something else is usually practicality - meaning I wouldn't be able to test this thing at all, or it may be pretty difficult/messy, without mocking.<sup>[5][5]</sup>
 
 ## General Principles
 
@@ -112,9 +68,9 @@ The (more complex) alternative to testing that only Group A can access Feature B
 
 > I get paid for **code that works**, not for tests, so my philosophy is to test **as little as possible** to reach a given level of confidence.<sup>[7][7]</sup> - Kent Beck (emphasis mine)
 
-> Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[10][10]</sup>
+> Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[9][9]</sup>
 
-> The way that tests help you solve problems is by mitigating risk... Test code itself does not directly deliver value. It's valuable for its loss prevention, both in terms of the real harm of bugs (lost revenue, violated privacy, errors in results) and in terms of the time spent detecting and fixing those bugs. We don't like paying that cost, so we pay for tests instead. It's an insurance policy... Selecting your policy is selecting how much risk you want to take on, or how much you can afford to avoid.<sup>[11][11]</sup>
+> The way that tests help you solve problems is by mitigating risk... Test code itself does not directly deliver value. It's valuable for its loss prevention, both in terms of the real harm of bugs (lost revenue, violated privacy, errors in results) and in terms of the time spent detecting and fixing those bugs. We don't like paying that cost, so we pay for tests instead. It's an insurance policy... Selecting your policy is selecting how much risk you want to take on, or how much you can afford to avoid.<sup>[10][10]</sup>
 
 #### Consider Inverting Test Design
 
@@ -140,19 +96,9 @@ For example,
 
 ### Others
 
-> Anti-Pattern: Sharing page objects, using your UI to log in, and not taking shortcuts.<sup>[9][9]</sup>
-
 #### DAMP
 
 > consider tolerating some duplication when it makes the test more descriptive and meaningful... [so that each test] can be understood entirely without leaving the test body. A reader of these tests can feel confident that the tests do what they claim to do and aren't hiding any bugs.<sup>[2][2]</sup>
-
-## Others
-
-### Consumer-Driven Contract using `Pact Net`
-
-> 1. The consuming team writes automated tests with all consumer expectations
-> 2. They publish the tests for the providing team
-> 3. The providing team runs the CDC tests continuously and keeps them green<sup>[4][4]</sup>
 
 ## References
 
@@ -176,6 +122,5 @@ For example,
 [6]: https://kentcdodds.com/blog/write-tests
 [7]: https://stackoverflow.com/a/153565/8828382
 [8]: https://techleadjournal.dev/episodes/58/
-[9]: https://docs.cypress.io/guides/references/best-practices
-[10]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
-[11]: https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing
+[9]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
+[10]: https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing
