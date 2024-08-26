@@ -100,7 +100,6 @@ For example,
 1. [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
 1. [How Deep Are Your Unit Tests](https://stackoverflow.com/a/153565/8828382)
 1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
-1. [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
 1. [Which Kinds of Tests Should I Write? Revisited](https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited)
 1. [Too much of a good thing: the trade-off we make with tests](https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing)
 
