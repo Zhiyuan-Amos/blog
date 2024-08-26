@@ -64,9 +64,9 @@ See [gif](https://twitter.com/erinfranmc/status/1148986961207730176).
 
 > I get paid for code that works, not for tests, so my philosophy is to test as little as possible to reach a given level of confidence.<sup>[7][7]</sup>
 
-> Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[9][9]</sup>
+> Test until fear is transformed into boredom. Do what seems to help until it doesn’t seem to help any more, then stop.<sup>[8][8]</sup>
 
-> The way that tests help you solve problems is by mitigating risk... Test code itself does not directly deliver value. It's valuable for its loss prevention, both in terms of the real harm of bugs (lost revenue, violated privacy, errors in results) and in terms of the time spent detecting and fixing those bugs. We don't like paying that cost, so we pay for tests instead. It's an insurance policy... Selecting your policy is selecting how much risk you want to take on, or how much you can afford to avoid.<sup>[10][10]</sup>
+> The way that tests help you solve problems is by mitigating risk... Test code itself does not directly deliver value. It's valuable for its loss prevention, both in terms of the real harm of bugs (lost revenue, violated privacy, errors in results) and in terms of the time spent detecting and fixing those bugs. We don't like paying that cost, so we pay for tests instead. It's an insurance policy... Selecting your policy is selecting how much risk you want to take on, or how much you can afford to avoid.<sup>[9][9]</sup>
 
 Practically, when coming up with a suite of test cases, consider starting from the top of the test pyramid: firstly, identify the test cases that are best covered by E2E tests, then Integration tests, then Unit tests, then Internal tests.
 
@@ -86,7 +86,7 @@ For example,
 
 > you shouldn't use If statements anywhere in your tests.
 >
-> Your tests should be as dumb as possible. They basically need to verify only one use case. With those if statements, you diverged from that guideline.<sup>[8][8]</sup>
+> Your tests should be as dumb as possible. They basically need to verify only one use case. With those if statements, you diverged from that guideline.<sup>[10][10]</sup>
 
 > consider tolerating some duplication when it makes the test more descriptive and meaningful... [so that each test] can be understood entirely without leaving the test body. A reader of these tests can feel confident that the tests do what they claim to do and aren't hiding any bugs.<sup>[2][2]</sup>
 
@@ -99,9 +99,9 @@ For example,
 1. [The Merits of Mocking](https://kentcdodds.com/blog/the-merits-of-mocking)
 1. [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
 1. [How Deep Are Your Unit Tests](https://stackoverflow.com/a/153565/8828382)
-1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
 1. [Which Kinds of Tests Should I Write? Revisited](https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited)
 1. [Too much of a good thing: the trade-off we make with tests](https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing)
+1. [Principles for Writing Valuable Unit Tests](https://techleadjournal.dev/episodes/58/)
 
 [1]: https://abseil.io/resources/swe-book/html/ch11.html
 [2]: https://abseil.io/resources/swe-book/html/ch12.html
@@ -110,6 +110,6 @@ For example,
 [5]: https://kentcdodds.com/blog/the-merits-of-mocking
 [6]: https://kentcdodds.com/blog/write-tests
 [7]: https://stackoverflow.com/a/153565/8828382
-[8]: https://techleadjournal.dev/episodes/58/
-[9]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
-[10]: https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing
+[8]: https://blog.thecodewhisperer.com/permalink/which-kinds-of-tests-should-i-write-revisited
+[9]: https://ntietz.com/blog/too-much-of-a-good-thing-the-cost-of-excess-testing
+[10]: https://techleadjournal.dev/episodes/58/
