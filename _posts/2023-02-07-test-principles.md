@@ -4,21 +4,23 @@ tags: [test]
 readtime: true
 ---
 
-The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> This is obvious, but the purpose of writing tests is sometimes forgotten and replaced by unhelpful metrics like achieving a certain code coverage. So, keep this in mind as you read the rest of the article.
+The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> This is obvious, but the purpose of writing tests is sometimes forgotten and replaced by unhelpful metrics like achieving a certain code coverage. Keep this in mind as you read the rest of the article.
 
-This article will cover pointers on writing tests across the different levels of the test pyramid including:
+This article covers pointers on writing tests for different levels of the test pyramid including:
 
-1. Internal (i.e. implementation details that do not impact the end-user consuming the software)
+1. Internal
 2. Unit
 3. Integration
 
-E2E tests are not covered as I haven't had the opportunity to deep-dive and write tests at that level. Prior to publishing this article, I had the opportunity to apply these pointers below at my workplace and found them to be helpful.
+(E2E tests are not covered as I have not had the opportunity to deep-dive and write good E2E tests)
 
 Then, we will cover some general principles that are applicable to all levels of the test pyramid.
 
 ## Test Pyramid
 
-### Disprefer Internal Tests
+### Internal Tests
+
+Internal tests refer to tests that cover implementation details that do not impact the end-user consuming the software.
 
 > Maintainable tests are ones that "just work": after writing them, engineers don't need to think about them again until they fail, and those failures indicate real bugs with clear causes... You shouldn't need to touch that test again as you refactor the system, fix bugs, or add new features.<sup>[2][2]</sup>
 
@@ -38,13 +40,9 @@ If it is necessary to write internal tests, consider testing observable behavior
 >
 > if I enter x and y, will the method call class A first, then call class B and then return the result of class A plus the result of class B?<sup>[4][4]</sup>
 
-### Consider Unit Tests
+### Unit Tests
 
-> At Google, we've found that engineers sometimes need to be persuaded that testing via public APIs is better than testing against implementation details...
->
-> Tests using only public APIs are, by definition, accessing the system under test in the same manner that its users would. Such tests are more realistic and less brittle because they form explicit contracts: if such a test breaks, it implies that an existing user of the system will also be broken. Testing only these contracts means that you're free to do whatever internal refactoring of the system you want without having to worry about making tedious changes to tests.<sup>[2][2]</sup>
-
-#### What is a Unit
+Unit tests generically refer to tests that cover public APIs.
 
 > If a method or class exists only to support one or two other classes (i.e., it is a "helper class"), it probably shouldn't be considered its own unit, and its functionality should be tested through those classes instead of directly.
 >
@@ -52,7 +50,13 @@ If it is necessary to write internal tests, consider testing observable behavior
 >
 > If a package or class can be accessed only by the people who own it, but it is designed to provide a general piece of functionality useful in a range of contexts (i.e., it is a "support library"), it should also be considered a unit and tested directly.<sup>[2][2]</sup>
 
-### Prefer Integration Tests
+> At Google, we've found that engineers sometimes need to be persuaded that testing via public APIs is better than testing against implementation details...
+>
+> Tests using only public APIs are, by definition, accessing the system under test in the same manner that its users would. Such tests are more realistic and less brittle because they form explicit contracts: if such a test breaks, it implies that an existing user of the system will also be broken. Testing only these contracts means that you're free to do whatever internal refactoring of the system you want without having to worry about making tedious changes to tests.<sup>[2][2]</sup>
+
+### Integration Tests
+
+Integration tests does what Unit tests do, but without mocking dependencies.
 
 > The more your tests resemble the way your software is used, the more confidence they can give you.<sup>[5][5]</sup>
 
