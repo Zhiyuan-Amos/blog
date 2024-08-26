@@ -8,7 +8,7 @@ The purpose of writing tests is to "support the ability to change. Whether you'r
 
 This article will cover pointers on writing tests across the different levels of the test pyramid including:
 
-1. Internal (i.e. implementation details that are not exposed to the end-user)
+1. Internal (i.e. implementation details that do not impact the end-user consuming the software)
 2. Unit
 3. Integration
 
