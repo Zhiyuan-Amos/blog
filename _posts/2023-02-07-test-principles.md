@@ -94,10 +94,6 @@ For example,
 >
 > Your tests should be as dumb as possible. They basically need to verify only one use case. With those if statements, you diverged from that guideline.<sup>[8][8]</sup>
 
-### Others
-
-#### DAMP
-
 > consider tolerating some duplication when it makes the test more descriptive and meaningful... [so that each test] can be understood entirely without leaving the test body. A reader of these tests can feel confident that the tests do what they claim to do and aren't hiding any bugs.<sup>[2][2]</sup>
 
 ## References
