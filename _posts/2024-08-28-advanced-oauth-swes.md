@@ -4,8 +4,6 @@ tags: [oauth]
 readtime: true
 ---
 
-## Preface
-
 Over the past 1 year at my job as a Software Engineer, I had the opportunity to deep-dive into OAuth 2 while using Keycloak, Azure Entra ID (formerly known as Azure AD) and Auth0. Along the way, I encountered several uncommon scenarios / got-chas that aren't well-documented which I'll share here.
 
 I am not covering everything related to OAuth 2 because there are already many great resources online, so this article assumes that you understand core concepts of OAuth 2 including:
