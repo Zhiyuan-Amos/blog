@@ -1,5 +1,5 @@
 ---
-title: OAuth for SWEs working on AuthZ systems
+title: OAuth for SWEs
 tags: [oauth]
 readtime: true
 ---
