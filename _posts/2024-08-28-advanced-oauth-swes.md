@@ -1,6 +1,6 @@
 ---
-title: OAuth 2 for SWEs working on AuthZ systems
-tags: [oauth2]
+title: OAuth for SWEs working on AuthZ systems
+tags: [oauth]
 readtime: true
 ---
 
