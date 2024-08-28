@@ -1,5 +1,5 @@
 ---
-title: OAuth 2 for SWEs
+title: Advanced OAuth 2 for SWEs
 tags: [oauth2]
 readtime: true
 ---
