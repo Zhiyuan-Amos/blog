@@ -65,15 +65,13 @@ For more information about the differences across OAuth 2 providers, see [nango'
 
 ### 1 Entity to 1 Token
 
+Client is only allowed to:
+
+1. Read Id Token
+2. Send Access Token to Resource Server
+3. Send Refresh Token to Authorization Server
+
 Even though Access Tokens are typically readable because they are JWTs, Clients must not read them (see [OAuth's documentation](https://oauth.net/2/access-tokens/)). This allows the Authorization Server to modify the token format to perhaps an encrypted token without breaking existing Clients.
-
-The following table illustrates which OAuth 2 entity is allowed to read and/or use which token.
-
-| OAuth 2 Entity       | Token         |
-|----------------------|---------------|
-| Client               | Id Token      |
-| Resource Server      | Access Token  |
-| Authorization Server | Refresh Token |
 
 Apart from achieving separation of concerns, this design also provides better security. For example, it is technically possible to merge the Access Token and Refresh Token into a single token. However, Resource Servers are generally considered to be less secure than Authorization Servers. If the token is leaked by the Resource Server, then a malicious actor is one step closer to being able to access the user's resources for a prolonged period of time by performing Token Refresh with the leaked token. So, keeping the Access Token and Refresh Token separate improves Defence in Depth (see [SO answer](https://stackoverflow.com/a/77026028/8828382)).
 
