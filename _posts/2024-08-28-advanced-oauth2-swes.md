@@ -109,9 +109,3 @@ Keycloak is a reasonably mature tool especially since it was recently added to C
 If Keycloak is integrated as part of a software solution, it should be noted that Keycloak's API specification may be lacking in details. For example, it does not specify the possible HTTP status codes that the API returns on error scenarios, and some of the request body's parameters may have undocumented restrictions such as input length restrictions. Thus, it may be helpful to create a service to wrap Keycloak's API and to write detailed API specification for other teams to consume.
 
 Having encountered multiple unforeseen issues because exceptional cases are generally not spelt out in the documentation, sometimes I wonder if implementing an OAuth 2 Server using a well-established library (e.g. [OpenIddict](https://github.com/openiddict/openiddict-core) for C#) may reduce maintenance effort in the long run. This is because Keycloak only abstracts implementation, not knowledge: Whether using Keycloak or implementing an OAuth 2 Server, developers must do the hard work of understanding OAuth 2 well. With good OAuth 2 libraries, the cost of implementing an OAuth 2 Server may be lesser than the cost of dealing with the intricacies of Keycloak and identifying and plugging the gaps of Keycloak. Of course, your mileage may vary; you may find Keycloak working nicely for your use cases, especially so if your use cases aren't complex.
-
-## Conclusion
-
-I hope my experiences and learnings above are helpful to you! Let me know in the comments below if the content is unclear and if you have questions.
-
-Thanks for reading!
