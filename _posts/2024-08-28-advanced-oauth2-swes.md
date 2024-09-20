@@ -32,7 +32,7 @@ As Access Tokens are short-lived, the Access Token may expire before Service A c
 The following solutions do not work:
 
 1. Refresh the Access Token: Service A does not have the Refresh Token.
-2. Use Service Account's Access Token: Service Account's Access Token does not contain User information which may be required for the other services' business & authorization logic.
+2. Use Service Account's Access Token: Service Account's Access Token does not contain user information which may be required for the other services' business & authorization logic.
 3. Disable validation of Access Token's lifetime by internal services: [Violates Defence in Depth](https://github.com/OWASP/CheatSheetSeries/issues/1087#issuecomment-1436930264) as the internal services might be incorrectly configured to be directly accessible from external network.
 
 What works is using a separate token for external-to-internal ("external token" for brevity) and internal-to-internal ("internal token" for brevity) requests:
@@ -75,24 +75,27 @@ Even though Access Tokens are typically readable because they are JWTs, Clients 
 
 Apart from achieving separation of concerns, this design also provides better security. For example, it is technically possible to merge the Access Token and Refresh Token into a single token. However, Resource Servers are generally considered to be less secure than Authorization Servers. If the token is leaked by the Resource Server, then a malicious actor is one step closer to being able to access the user's resources for a prolonged period of time by performing Token Refresh with the leaked token. So, keeping the Access Token and Refresh Token separate improves Defence in Depth (see [SO answer](https://stackoverflow.com/a/77026028/8828382)).
 
-### Personal Access Token (PAT) vs OAuth 2
+### Personal Access Token (PAT)
 
-PAT is a valid alternative to OAuth 2 and popular software like GitHub allow users to generate PATs. However, this is generally an inferior alternative to OAuth 2 for the following reasons:
+PAT is another means of obtaining authorization for User Accounts, and popular applications like GitHub ("the main application" for clarity. Applications integrating with "the main application" are known as "third-party applications") allow users ("third-party developers" for clarity) to generate PATs. It's a lot easier to obtain authorization as third-party developers only need to:
 
-1. **Security**: If the PAT is leaked, a malicious actor can gain access to the user's resources for a prolonged period of time. This is because not all PAT providers support expiration of PATs, so users have to manually revoke it upon detecting unauthorized usage. For providers that support expiration of PATs, the minimum lifetime is typically at least 1 day.
+1. Create a PAT on the main application
+2. Add the PAT to HTTP Requests sent to the main application's APIs
 
-    Whereas if both Access Token and Refresh Token are leaked, a malicious actor can only gain access to the user's resources for a short period of time. This is because the lifetime of Access Tokens are typically short, ranging from a few minutes to a few hours.
-    1. For Confidential Clients, the malicious actor cannot refresh the Access Token as Token Refresh requires the Client's Id and Secret too.
-    2. For Public Clients, even though the malicious actor can refresh the Access Token, there are several mitigations in place such as invalidating of Refresh Tokens upon user logout and limiting its maximum lifetime (e.g. Azure Entra ID limits it to [24 hours](https://learn.microsoft.com/en-us/entra/identity-platform/refresh-tokens)).
+Whereas there's more complexity in using OAuth 2 as third-party developers need to:
 
-2. **Standards**: OAuth 2 is an industry-standard protocol while PAT has no standards governing it, which means there's no industry-wide recommendations for best practices and pitfalls to avoid when implementing a PAT solution.
+1. Create an OAuth 2 Client on the main application
+2. Import an OAuth 2 Client library in code
+3. Configure the OAuth 2 Client in code
 
-PAT can be considered over OAuth 2 if it is necessary to make it easy for third-party developers to try out your APIs, as it only takes 2 steps to do so:
+These steps are likely non-trivial for a developer unfamiliar with OAuth 2.
 
-1. Create a PAT on your software's website
-2. Add the PAT to HTTP Requests sent to your software
+However, OAuth 2 provides better User Experience as each user of the third-party application does not have to create a PAT on the main application and set the PAT in the third-party application; they only have to login to the main application. So, PAT should typically only be used when both of these conditions are met:
 
-Whereas creating an OAuth 2 Client and importing a library to configure the OAuth 2 Client not only takes a couple more steps, it will also likely be non-trivial for a developer who is unfamiliar with OAuth 2.
+1. Only the third-party developer is using the third-party application.
+2. The PAT is configured to only expire after a long period of time (i.e. way longer than the lifetime of a typical Access Token. Therefore, PAT usage should be restricted to secure environments. Otherwise, if the PAT is leaked, a malicious actor can gain access to the user's resources for a prolonged period of time, until the user manually revokes it).
+
+Lastly, note that PAT has no standards governing it, which means there's no industry-wide recommendations for best practices and pitfalls to avoid when implementing a PAT solution.
 
 ## My experience with Keycloak
 
