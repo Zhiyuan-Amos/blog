@@ -97,6 +97,16 @@ However, OAuth 2 provides better User Experience as each user of the third-party
 
 Lastly, note that PAT has no standards governing it, which means there's no industry-wide recommendations for best practices and pitfalls to avoid when implementing a PAT solution.
 
+### API Key
+
+API Key is very similar to PAT, so it's characteristics are written here briefly with reference to PAT:
+
+1. It is also another means of obtaining authorization, but for Service Accounts.
+2. It provides ease of obtaining authorization for the same reasons as PAT.
+3. OAuth 2 provides better User Experience as each third-party application does not have to create an API Key on the main application and set the API Key in the third-party application; they only have to login to the main application through Dynamic Client Registration.
+4. So, API Key should only be used if it is configured to only expire after a long period of time (and usage restricted to secure environments).
+5. It has no standards governing it.
+
 ## My experience with Keycloak
 
 Of all the OAuth 2 providers, I used Keycloak the most, so I'll briefly share of my experience with using Keycloak in production.
