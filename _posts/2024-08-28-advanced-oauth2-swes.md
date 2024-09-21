@@ -77,22 +77,22 @@ Apart from achieving separation of concerns, this design also provides better se
 
 ### Personal Access Token (PAT)
 
-PAT is another means of obtaining authorization for User Accounts, and popular applications like GitHub ("the main application" for clarity. Applications integrating with "the main application" are known as "third-party applications") allow users ("third-party developers" for clarity) to generate PATs. It's a lot easier to obtain authorization as third-party developers only need to:
+PAT is another means of obtaining authorization for User Accounts, and popular applications like GitHub ("the main application" for clarity. Applications integrating with "the main application" are known as "integrator applications") allow users ("developers" for clarity) to generate PATs. It's a lot easier to obtain authorization as developers only need to:
 
 1. Create a PAT on the main application
 2. Add the PAT to HTTP Requests sent to the main application's APIs
 
-Whereas there's more complexity in using OAuth 2 as third-party developers need to:
+Whereas there's more steps required to use OAuth 2 as developers need to:
 
 1. Create an OAuth 2 Client on the main application
-2. Import an OAuth 2 Client library in code
-3. Configure the OAuth 2 Client in code
+2. Import an OAuth 2 Client library in the code of the integrator application
+3. Configure the OAuth 2 Client in the code of the integrator application
 
-These steps are likely non-trivial for a developer unfamiliar with OAuth 2.
+These steps are likely non-trivial for a developer unfamiliar with OAuth 2, especially so because there are more values that can be configured in OAuth 2.
 
-However, OAuth 2 provides better User Experience as each user of the third-party application does not have to create a PAT on the main application and set the PAT in the third-party application; they only have to login to the main application. So, PAT should typically only be used when both of these conditions are met:
+However, OAuth 2 provides better User Experience as each user of the integrator application does not have to create a PAT on the main application and set the PAT in the integrator application; they only have to login to the main application. So, PAT should typically only be used when both of these conditions are met:
 
-1. Only the third-party developer is using the third-party application.
+1. Only the developer is using the integrator application.
 2. The PAT is configured to only expire after a long period of time (i.e. way longer than the lifetime of a typical Access Token. Therefore, PAT usage should be restricted to secure environments. Otherwise, if the PAT is leaked, a malicious actor can gain access to the user's resources for a prolonged period of time, until the user manually revokes it).
 
 Lastly, note that PAT has no standards governing it, which means there's no industry-wide recommendations for best practices and pitfalls to avoid when implementing a PAT solution.
@@ -103,7 +103,7 @@ API Key is very similar to PAT, so it's characteristics are written briefly with
 
 1. It is also another means of obtaining authorization, but for Service Accounts.
 2. It provides ease of obtaining authorization for the same reasons as PAT.
-3. OAuth 2 provides better User Experience as each third-party application does not have to create an API Key on the main application and set the API Key in the third-party application. Dynamic Client Registration (a feature of OAuth 2) allows third-party applications to create a Service Account through multiple ways, one of which being having a user login to the main application.
+3. OAuth 2 provides better User Experience as each integrator application does not have to create an API Key on the main application and set the API Key in the integrator application. Dynamic Client Registration (a feature of OAuth 2) allows integrator applications to create a Service Account through multiple ways, one of which being having a user login to the main application.
 4. So, API Key should only be used if it is configured to only expire after a long period of time (and usage restricted to secure environments).
 5. It has no standards governing it.
 
