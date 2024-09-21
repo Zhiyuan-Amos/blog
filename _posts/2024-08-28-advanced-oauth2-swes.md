@@ -104,7 +104,7 @@ API Key is very similar to PAT, so it's characteristics are written briefly with
 1. It is also another means of obtaining authorization, but for Service Accounts.
 2. It provides ease of obtaining authorization for the same reasons as PAT.
 3. OAuth 2 provides better User Experience as each integrator application does not have to create an API Key on the main application and set the API Key in the integrator application. Dynamic Client Registration (a feature of OAuth 2) allows integrator applications to create a Service Account through multiple ways, one of which being having a user login to the main application.
-4. So, API Key should only be used if it is configured to only expire after a long period of time (and usage restricted to secure environments).
+4. So, API Key should only be used if only the developer is using the integrator application and the API Key is configured to only expire after a long period of time (and usage restricted to secure environments).
 5. It has no standards governing it.
 
 ## My experience with Keycloak
