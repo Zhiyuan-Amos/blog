@@ -73,7 +73,7 @@ Client is only allowed to:
 
 Even though Access Tokens are typically readable because they are JWTs, Clients must not read them (see [OAuth's documentation](https://oauth.net/2/access-tokens/)). This allows the Authorization Server to modify the token format to perhaps an encrypted token without breaking existing Clients.
 
-Apart from achieving separation of concerns, this design also provides better security. For example, it is technically possible to merge the Access Token and Refresh Token into a single token. However, Resource Servers are generally considered to be less secure than Authorization Servers. If the token is leaked by the Resource Server, then a malicious actor is one step closer to being able to access the user's resources for a prolonged period of time by performing Token Refresh with the leaked token. So, keeping the Access Token and Refresh Token separate improves Defence in Depth (see [SO answer](https://stackoverflow.com/a/77026028/8828382)).
+Apart from achieving separation of concerns, this design also provides better security. For example, it is technically possible to merge the Access Token and Refresh Token into a single token by adding a `refresh_expires` claim in that token. However, Resource Servers are generally considered to be less secure than Authorization Servers. If the token is leaked by the Resource Server, then a malicious actor is one step closer to being able to access the user's resources for a prolonged period of time by performing Token Refresh with the leaked token. So, keeping the Access Token and Refresh Token separate improves Defence in Depth (see [SO answer](https://stackoverflow.com/a/77026028/8828382)).
 
 ### Personal Access Token (PAT)
 
