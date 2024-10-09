@@ -90,10 +90,10 @@ Whereas there's more steps required to use OAuth 2 as developers need to:
 
 These steps are likely non-trivial for a developer unfamiliar with OAuth 2, especially so because there are more values that can be configured in OAuth 2.
 
-However, OAuth 2 provides better User Experience as each user of the integrator application does not have to create a PAT on the main application and set the PAT in the integrator application; they only have to login to the main application. So, PAT should typically only be used when both of these conditions are met:
+However, OAuth 2 provides better User Experience as each user of the integrator application does not have to create a PAT on the main application and set it in the integrator application; they only have to login to the main application. So, PAT should typically only be used when both of these conditions are met:
 
 1. Only the developer is using the integrator application.
-2. The PAT is configured to only expire after a long period of time (i.e. way longer than the lifetime of a typical Access Token. Therefore, PAT usage should be restricted to secure environments. Otherwise, if the PAT is leaked, a malicious actor can gain access to the user's resources for a prolonged period of time, until the user manually revokes it).
+2. The PAT is configured to only expire after a long period of time (i.e. way longer than the lifetime of a typical Access Token. Therefore, PAT usage should be restricted to secure environments. Otherwise, if the PAT is leaked, a malicious actor can gain access to the user's resources for a prolonged period of time, until the user manually revokes it). Otherwise, the user has to periodically navigate to the main application, create a new PAT and set it in the integrator application.
 
 Lastly, note that PAT has no standards governing it, which means there's no industry-wide recommendations for best practices and pitfalls to avoid when implementing a PAT solution.
 
