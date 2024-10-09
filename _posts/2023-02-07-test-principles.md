@@ -4,33 +4,31 @@ tags: [test]
 readtime: true
 ---
 
-The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> This is obvious, but the purpose of writing tests is sometimes forgotten and replaced by unhelpful metrics like achieving a certain code coverage. Keep this in mind as you read the rest of the article.
+The purpose of writing tests is to "support the ability to change. Whether you're adding new features, doing a refactoring focused on code health, or undertaking a larger redesign, automated testing can quickly catch mistakes, and this makes it possible to change software with confidence."<sup>[1][1]</sup> This is obvious, but is sometimes forgotten and instead replaced by unhelpful metrics like achieving a certain code coverage.
 
-This article covers pointers on writing tests for different levels of the test pyramid including:
+This article is mainly a consolidation of quotes from big tech companies like Google and other experts in the industry like Kent Beck, containing pointers on how to write good tests to achieve the above goals. I have read these 2 years ago and have since applied it at work, and I personally found these pointers to be very helpful.
+
+As I have not had the opportunity to write E2E tests and so can't vouch for their usefulness, I only include quotes and personal opinions for these other levels of the test pyramid and some general principles that are applicable to all levels of the test pyramid:
 
 1. Internal
 2. Unit
 3. Integration
 
-(E2E tests are not covered as I have not had the opportunity to deep-dive and write good E2E tests)
-
-Then, we will cover some general principles that are applicable to all levels of the test pyramid.
-
 ## Test Pyramid
 
 ### Internal Tests
 
-Internal tests refer to tests that cover implementation details that do not impact the end-user consuming the software.
+Internal tests verify internal implementation details that are not exposed to the end-user consuming the software. Generally, internal tests are costly.
 
 > Maintainable tests are ones that "just work": after writing them, engineers don't need to think about them again until they fail, and those failures indicate real bugs with clear causes... You shouldn't need to touch that test again as you refactor the system, fix bugs, or add new features.<sup>[2][2]</sup>
 
-Mocking, a key component of internal tests, causes tests to brittle.
+Mocking (or stubbing), a key component of internal tests, causes tests to brittle.
 
 > When mocking frameworks first came into use at Google, they seemed like a hammer fit for every nail... It wasn't until several years and countless tests later that we began to realize the cost of such tests: though these tests were easy to write, we suffered greatly given that they required constant effort to maintain while rarely finding bugs...
 >
 > Stubbing leaks implementation details of your code into your test. When implementation details in your production code change, you'll need to update your tests to reflect these changes.<sup>[3][3]</sup>
 
-If it is necessary to write internal tests, consider testing observable behavior instead of implementation detail:
+So, internal tests should be dis-preferred. If it is necessary to write internal tests, consider testing observable behavior instead of implementation detail to make these tests more maintainable:
 
 > Think about
 >
@@ -42,7 +40,7 @@ If it is necessary to write internal tests, consider testing observable behavior
 
 ### Unit Tests
 
-Unit tests generically refer to tests that cover public APIs.
+Unit tests verify the behaviour of public APIs while using mock services (e.g. database, message queue).
 
 > If a method or class exists only to support one or two other classes (i.e., it is a "helper class"), it probably shouldn't be considered its own unit, and its functionality should be tested through those classes instead of directly.
 >
@@ -56,7 +54,7 @@ Unit tests generically refer to tests that cover public APIs.
 
 ### Integration Tests
 
-Integration tests does what Unit tests do, but without mocking dependencies.
+Integration tests verify the behaviour of public APIs while using real services.
 
 > The more your tests resemble the way your software is used, the more confidence they can give you.<sup>[5][5]</sup>
 
