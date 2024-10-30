@@ -75,6 +75,8 @@ Even though Access Tokens are typically readable because they are JWTs, Clients 
 
 Apart from achieving separation of concerns, this design also provides better security. For example, it is technically possible to merge the Access Token and Refresh Token into a single token by adding a `refresh_expires` claim to that token. However, Resource Servers are generally considered to be less secure than Authorization Servers. If the token is leaked by the Resource Server, then a malicious actor is one step closer to being able to access the user's resources for a prolonged period of time by performing Token Refresh with the leaked token. So, keeping the Access Token and Refresh Token separate improves Defence in Depth (see [SO answer](https://stackoverflow.com/a/77026028/8828382)).
 
+In summary, the Client is only allowed to read the Id Token, the Resource Server only allowed to receive and read the Access Token, and the Authorization Server only allowed to receive and read the Refresh Token.
+
 ### Personal Access Token (PAT)
 
 PAT is another means of obtaining authorization for User Accounts, and popular applications like GitHub ("the main application" for clarity. Applications integrating with "the main application" are known as "integrator applications") allow users ("developers" for clarity) to generate PATs. It's a lot easier to obtain authorization as developers only need to:
